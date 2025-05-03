@@ -10,11 +10,7 @@ export const HabitProvider = ({ children }) => {
 
   const fetchHabits = async () => {
     try {
-<<<<<<< HEAD
       const res = await axios.get('/api/habits', {
-=======
-      const res = await axios.get('https://habit-vault-backend.onrender.com/api/habits', {
->>>>>>> 0f17b3d4e7d064856edcd517f0dd47d937a33e9b
         headers: { 'x-auth-token': token }
       });
       setHabits(res.data);
@@ -31,11 +27,7 @@ export const HabitProvider = ({ children }) => {
 
   const addHabit = async (habitData) => {
     try {
-<<<<<<< HEAD
       const res = await axios.post('/api/habits', habitData, {
-=======
-      const res = await axios.post('https://habit-vault-backend.onrender.com/api/habits', habitData, {
->>>>>>> 0f17b3d4e7d064856edcd517f0dd47d937a33e9b
         headers: { 'x-auth-token': token }
       });
       setHabits([...habits, res.data]);
@@ -48,11 +40,7 @@ export const HabitProvider = ({ children }) => {
 
   const toggleHabitCompletion = async (habitId) => {
     try {
-<<<<<<< HEAD
       const res = await axios.put(`/api/habits/${habitId}/complete`, {}, {
-=======
-      const res = await axios.put(`https://habit-vault-backend.onrender.com/api/habits/${habitId}/complete`, {}, {
->>>>>>> 0f17b3d4e7d064856edcd517f0dd47d937a33e9b
         headers: { 'x-auth-token': token }
       });
       setHabits(habits.map(habit => 
@@ -67,11 +55,7 @@ export const HabitProvider = ({ children }) => {
 
   const deleteHabit = async (habitId) => {
     try {
-<<<<<<< HEAD
       await axios.delete(`/api/habits/${habitId}`, {
-=======
-      await axios.delete(`https://habit-vault-backend.onrender.com/api/habits/${habitId}`, {
->>>>>>> 0f17b3d4e7d064856edcd517f0dd47d937a33e9b
         headers: { 'x-auth-token': token }
       });
       setHabits(habits.filter(habit => habit._id !== habitId));
