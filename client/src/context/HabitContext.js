@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../config/axios';
 import { useAuth } from './AuthContext';
 
 const HabitContext = createContext(null);
@@ -10,7 +10,7 @@ export const HabitProvider = ({ children }) => {
 
   const fetchHabits = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/habits', {
+      const res = await axios.get('/api/habits', {
         headers: { 'x-auth-token': token }
       });
       setHabits(res.data);
@@ -27,7 +27,7 @@ export const HabitProvider = ({ children }) => {
 
   const addHabit = async (habitData) => {
     try {
-      const res = await axios.post('http://localhost:5000/api/habits', habitData, {
+      const res = await axios.post('/api/habits', habitData, {
         headers: { 'x-auth-token': token }
       });
       setHabits([...habits, res.data]);
@@ -40,7 +40,7 @@ export const HabitProvider = ({ children }) => {
 
   const toggleHabitCompletion = async (habitId) => {
     try {
-      const res = await axios.put(`http://localhost:5000/api/habits/${habitId}/complete`, {}, {
+      const res = await axios.put(`/api/habits/${habitId}/complete`, {}, {
         headers: { 'x-auth-token': token }
       });
       setHabits(habits.map(habit => 
@@ -55,7 +55,7 @@ export const HabitProvider = ({ children }) => {
 
   const deleteHabit = async (habitId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/habits/${habitId}`, {
+      await axios.delete(`/api/habits/${habitId}`, {
         headers: { 'x-auth-token': token }
       });
       setHabits(habits.filter(habit => habit._id !== habitId));
